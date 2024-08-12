@@ -2,6 +2,10 @@ import express from 'express';
 import pkg from 'pg';
 import dotenv from 'dotenv';
 
+app.use(cors({
+    origin: 'https://classroom-akashs-projects-f546a51c.vercel.app/' 
+  }));
+
 dotenv.config();
 
 const { Pool } = pkg;
@@ -19,9 +23,7 @@ const app = express();
 //     }
 //   });
 
-app.use(cors({
-    origin: 'https://classroom-akashs-projects-f546a51c.vercel.app/' 
-  }));
+
 
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
