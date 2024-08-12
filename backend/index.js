@@ -7,7 +7,9 @@ const app = express();
 
 // Use cors middleware
 app.use(cors({
-    origin: 'https://classroom-akashs-projects-f546a51c.vercel.app'  
+    origin: 'https://your-vercel-app.vercel.app',  
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,  
 }));
 
 dotenv.config();
