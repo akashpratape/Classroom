@@ -19,6 +19,10 @@ const app = express();
 //     }
 //   });
 
+app.use(cors({
+    origin: 'https://classroom-akashs-projects-f546a51c.vercel.app/' 
+  }));
+
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
     ssl: {
