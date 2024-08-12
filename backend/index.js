@@ -1,16 +1,30 @@
 import express from 'express';
+import cors from 'cors'; // Import cors
 import pkg from 'pg';
 import dotenv from 'dotenv';
 
 const app = express();
+
+// Use cors middleware
 app.use(cors({
-    origin: 'https://classroom-akashs-projects-f546a51c.vercel.app/' 
-  }));
+    origin: 'https://classroom-akashs-projects-f546a51c.vercel.app'  
+}));
 
 dotenv.config();
 
 const { Pool } = pkg;
 const PORT = parseInt(process.env.PORT, 10) || 8000;
+
+const pool = new Pool({
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
+});
+
+export default pool;
+
+
 
 // const pool = new Pool({
 //     user: process.env.DB_USER,
@@ -23,16 +37,6 @@ const PORT = parseInt(process.env.PORT, 10) || 8000;
 //     }
 //   });
 
-
-
-const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-      rejectUnauthorized: false
-    }
-});
-
-export default pool;
 
 app.use(express.json());
 
