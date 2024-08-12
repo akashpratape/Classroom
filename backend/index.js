@@ -2,6 +2,7 @@ import express from 'express';
 import pkg from 'pg';
 import dotenv from 'dotenv';
 
+const app = express();
 app.use(cors({
     origin: 'https://classroom-akashs-projects-f546a51c.vercel.app/' 
   }));
@@ -10,7 +11,6 @@ dotenv.config();
 
 const { Pool } = pkg;
 const PORT = parseInt(process.env.PORT, 10) || 8000;
-const app = express();
 
 // const pool = new Pool({
 //     user: process.env.DB_USER,
