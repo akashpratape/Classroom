@@ -8,16 +8,25 @@ const { Pool } = pkg;
 const PORT = parseInt(process.env.PORT, 10) || 8000;;
 const app = express();
 
+// const pool = new Pool({
+//     user: process.env.DB_USER,
+//     host: process.env.DB_HOST,
+//     database: process.env.DB_DATABASE,
+//     password: process.env.DB_PASSWORD,
+//     port: parseInt(process.env.DB_PORT, 10),
+//     ssl: {
+//       rejectUnauthorized: false
+//     }
+//   });
+
 const pool = new Pool({
-    user: process.env.DB_USER,
-    host: process.env.DB_HOST,
-    database: process.env.DB_DATABASE,
-    password: process.env.DB_PASSWORD,
-    port: parseInt(process.env.DB_PORT, 10),
+    connectionString: process.env.DATABASE_URL,
     ssl: {
       rejectUnauthorized: false
     }
-  });
+});
+
+module.exports = pool;
 
 app.use(express.json());
 
