@@ -1,11 +1,11 @@
 import express from 'express';
 import pkg from 'pg';
 import dotenv from 'dotenv';
-import { Pool } from 'pg';
-
 
 dotenv.config();
-const PORT = parseInt(process.env.PORT, 10) || 8000;;
+
+const { Pool } = pkg;
+const PORT = parseInt(process.env.PORT, 10) || 8000;
 const app = express();
 
 // const pool = new Pool({
@@ -26,7 +26,7 @@ const pool = new Pool({
     }
 });
 
-export default  pool
+export default pool;
 
 app.use(express.json());
 
