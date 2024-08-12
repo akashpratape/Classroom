@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [role, setRole] = useState(''); // No default role selected
+  const [role, setRole] = useState(''); 
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
@@ -20,7 +20,7 @@ function Register() {
     }
 
     try {
-      const response = await fetch('/api/register', {
+      const response = await fetch('https://classroom-om4x.onrender.com/api/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -32,7 +32,7 @@ function Register() {
 
       if (response.ok) {
         alert(data.message);
-        navigate('/login/' + role.toLowerCase()); // Navigate to the appropriate login page
+        navigate('/login/' + role.toLowerCase()); 
       } else {
         setError(data.message);
       }

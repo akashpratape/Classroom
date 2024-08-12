@@ -11,9 +11,9 @@ function PrincipalDashboard() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const teachersResponse = await fetch('/api/teachers');
-                const classroomsResponse = await fetch('/api/classrooms');
-                const studentsResponse = await fetch('/api/students');
+                const teachersResponse = await fetch('https://classroom-om4x.onrender.com/api/teachers');
+                const classroomsResponse = await fetch('https://classroom-om4x.onrender.com/api/classrooms');
+                const studentsResponse = await fetch('https://classroom-om4x.onrender.com/api/students');
 
                 if (teachersResponse.ok) {
                     const teachersData = await teachersResponse.json();
@@ -38,7 +38,7 @@ function PrincipalDashboard() {
 
         const fetchStudents = async () => {
             try {
-                const response = await fetch('/api/students');
+                const response = await fetch('https://classroom-om4x.onrender.com/api/students');
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }
@@ -56,7 +56,7 @@ function PrincipalDashboard() {
     const handleAssignClassroom = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('/api/assign-classroom', {
+            const response = await fetch('https://classroom-om4x.onrender.com/api/assign-classroom', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ teacherId: selectedTeacher, classroomId: selectedClassroom }),
@@ -76,7 +76,7 @@ function PrincipalDashboard() {
         if (!editingTeacher) return;
     
         try {
-            const response = await fetch(`/api/teachers/${editingTeacher.id}`, {
+            const response = await fetch(`https://classroom-om4x.onrender.com/api/teachers/${editingTeacher.id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(editingTeacher),
@@ -204,7 +204,7 @@ function PrincipalDashboard() {
                                     <button
                                         onClick={async () => {
                                             try {
-                                                const response = await fetch(`/api/teachers/${teacher.id}`, {
+                                                const response = await fetch(`https://classroom-om4x.onrender.com/api/teachers/${teacher.id}`, {
                                                     method: 'DELETE',
                                                 });
                                                 if (response.ok) {

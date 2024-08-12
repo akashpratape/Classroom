@@ -9,7 +9,7 @@ function TeacherDashboard() {
   useEffect(() => {
     async function fetchStudents() {
       try {
-        const response = await fetch('/api/students');
+        const response = await fetch('https://classroom-om4x.onrender.com/api/students');
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -42,7 +42,7 @@ function TeacherDashboard() {
 
   const handleUpdate = async () => {
     try {
-      const response = await fetch(`/api/students/${editingStudent.id}`, {
+      const response = await fetch(`https://classroom-om4x.onrender.com/api/students/${editingStudent.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -69,7 +69,7 @@ function TeacherDashboard() {
 
   const handleDelete = async (studentId) => {
     try {
-      const response = await fetch(`/api/students/${studentId}`, {
+      const response = await fetch(`https://classroom-om4x.onrender.com/api/students/${studentId}`, {
         method: 'DELETE',
       });
 
@@ -132,7 +132,7 @@ function TeacherDashboard() {
                     <Button variant="success" onClick={handleUpdate}>
                       Save
                     </Button>
-                    <Button variant="secondary" onClick={handleCancelEdit}>S001
+                    <Button variant="secondary" onClick={handleCancelEdit}>
                       Cancel
                     </Button>
                   </td>

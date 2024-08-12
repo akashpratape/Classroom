@@ -10,7 +10,7 @@ function StudentDashboard() {
 
     const fetchStudents = async () => {
         try {
-            const response = await fetch("/api/students");
+            const response = await fetch("https://classroom-om4x.onrender.com/api/students");
             if (!response.ok) {
                 throw new Error("Error fetching students");
             }
@@ -22,7 +22,6 @@ function StudentDashboard() {
     };
 
     const handleEdit = (id) => {
-        // Implement edit functionality
         console.log("Edit student with ID:", id);
     };
 
@@ -35,15 +34,19 @@ function StudentDashboard() {
                         <th>Reg. No</th>
                         <th>Name</th>
                         <th>Department</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     {students.map((student) => (
-                        <tr key={student.reg_no}>
+                        <tr key={student.id}> 
                             <td>{student.reg_no}</td>
                             <td>{student.name}</td>
                             <td>{student.department}</td>
                             <td>
+                                <Button onClick={() => handleEdit(student.id)} variant="primary">
+                                    Edit
+                                </Button>
                             </td>
                         </tr>
                     ))}
